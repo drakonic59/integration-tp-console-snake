@@ -9,15 +9,15 @@ pipeline {
         }
         stage('Package') {
             steps {
-            	mvn clean
-                mvn package
+            	mvn 'clean'
+                mvn 'package'
             }
         }
         stage('Analyse') {
             steps {
-            	mvn checkstyle:checkstyle
-                mvn spotbugs:spotbugs
-                mvn pmd:pmd
+            	mvn 'checkstyle:checkstyle'
+                mvn 'spotbugs:spotbugs'
+                mvn 'pmd:pmd'
             }
         }
         stage('Publish') {
@@ -27,10 +27,11 @@ pipeline {
         }
 		stage('Push into Maven nexus') {
             steps {
-nexusPublisher nexusInstanceId: 'NexuxLocalJenkins', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/mon-appli-0.2.0.jar']], mavenCoordinate: [artifactId: 'mon-appli', groupId: 'fr.ilias.hattane', packaging: 'jar', version: '0.2.0']]]            }
-        }
+nexusPublisher nexusInstanceId: 'NexuxLocalJenkins', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/mon-appli-0.2.0.jar']], mavenCoordinate: [artifactId: 'mon-appli', groupId: 'fr.ilias.hattane', packaging: 'jar', version: '0.2.0']]]            
+			}
+		}
         
-    }
+		}
     
     post {
         always {
