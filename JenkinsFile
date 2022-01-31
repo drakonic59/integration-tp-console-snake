@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+	tools {
+        maven 'Maven 3.6.3'
+    }
+	
     stages {
 		stage('Hello') {
             steps {
@@ -9,8 +13,8 @@ pipeline {
         }
         stage('Package') {
             steps {
-            	bat "mvn clean"
-                bat "mvn package"
+            	mvn 'clean'
+                mvn 'package'
             }
         }
         stage('Analyse') {
