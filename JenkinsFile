@@ -7,6 +7,12 @@ pipeline {
             	echo "hello world !"
             }
         }
+        stage('Package') {
+            steps {
+            	bash "mvn clean"
+                bash 'package'
+            }
+        }
         stage('Analyse') {
             steps {
             	bat 'mvn checkstyle:checkstyle'
