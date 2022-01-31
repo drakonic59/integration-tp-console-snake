@@ -1,4 +1,4 @@
-package application;
+package integration_tp.integration_tp;
 
 public class Wall extends GameObject {
 
