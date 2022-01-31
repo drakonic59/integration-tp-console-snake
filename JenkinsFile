@@ -9,8 +9,8 @@ pipeline {
         }
         stage('Package') {
             steps {
-            	bash "mvn clean"
-                bash 'package'
+            	bat 'mvn clean'
+                bat 'mvn package'
             }
         }
         stage('Analyse') {
