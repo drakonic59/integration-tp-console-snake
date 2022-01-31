@@ -5,20 +5,19 @@ pipeline {
 		stage('Hello') {
             steps {
             	echo "hello world !"
-				bat "echo 'hello world '"
             }
         }
         stage('Package') {
             steps {
-            	bat 'mvn clean'
-                bat 'mvn package' 
+            	mvn clean
+                mvn package
             }
         }
         stage('Analyse') {
             steps {
-            	bat 'mvn checkstyle:checkstyle'
-                bat 'mvn spotbugs:spotbugs'
-                bat 'mvn pmd:pmd' 
+            	mvn checkstyle:checkstyle
+                mvn spotbugs:spotbugs
+                mvn pmd:pmd
             }
         }
         stage('Publish') {
