@@ -4,13 +4,13 @@ pipeline {
     stages {
 		stage('Hello') {
             steps {
-            	bat 'echo "hello world !"'
+            	echo "hello world !"
             }
         }
         stage('Package') {
             steps {
-            	mvn 'clean'
-                mvn 'package'
+            	bat 'mvn clean'
+                bat 'mvn package'
             }
         }
         stage('Analyse') {
