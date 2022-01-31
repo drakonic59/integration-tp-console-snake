@@ -1,20 +1,20 @@
-package application;
+package integration_tp.integration_tp;
 
 import java.util.Scanner;
 
 public class Main {
-
+	
+	public static final int SCREEN_WIDTH = 20; // Columns
+	public static final int SCREEN_HEIGHT = 10; // Rows
+	public static final int SNAKE_STARTING_X = SCREEN_WIDTH / 2;
+	public static final int SNAKE_STARTING_Y = SCREEN_HEIGHT / 2;
+	
+	public static GameScreen screen;
+	
 	public static void main(String[] args) {
 
-		// Constants
-		final int SCREEN_WIDTH = 20; // Columns
-		final int SCREEN_HEIGHT = 10; // Rows
-		final int SNAKE_STARTING_X = SCREEN_WIDTH / 2;
-		final int SNAKE_STARTING_Y = SCREEN_HEIGHT / 2;
-
 		// Init screen
-		GameScreen screen = new GameScreen(SCREEN_WIDTH, SCREEN_HEIGHT);
-		screen.InitScreen();
+		initScreen();
 
 		// Init walls
 		Wall wall = new Wall('#');
@@ -58,6 +58,11 @@ public class Main {
 				break;
 			}
 		}
+	}
+	
+	public static void initScreen() {
+		screen = new GameScreen(SCREEN_WIDTH, SCREEN_HEIGHT);
+		screen.InitScreen();
 	}
 
 }
